@@ -7,9 +7,18 @@
         <b-nav-form>
             <b-form-input type="text" v-model="searchValue" size="sm" class="mr-sm-2" placeholder="Search" ></b-form-input>
             <b-button size="sm" class="my-2 my-sm-0"  @click="search">Buscar</b-button>
-            <div v-for="proyecto in proyecto" :key="proyecto.id">
+            <div class="listaPyoyecto" v-for="proyecto in proyecto" :key="proyecto.id">
                 <h2>{{ proyecto.nombre_proyecto }}</h2>
-                <p>{{ proyecto.descripcion }}</p>
+                <td>
+                  <p>{{ proyecto.descripcion }}</p>
+
+                </td>
+                <td>
+                  
+                  <img class="verProyecto" src="../assets/iconos/verProyecto.png" alt="">
+
+                </td>
+
             </div>
         </b-nav-form> 
       <!-- Agregar más campos del proyecto aquí -->
@@ -20,12 +29,13 @@
             <tbody>
                 <tr v-for="proyecto in proyectos " :key="proyecto.id" >
                     <td>
-                        <div class="mt-4">
+                        <div class="container " >
                             <b-card img-src="https://placekitten.com/300/300" img-alt="Card image" img-left class="mb-3">
                               <b-card-text>
+                                <h1>{{ proyecto.id }}</h1>
                                 <h3>{{ proyecto.nombre_proyecto}}</h3>
-
-                                {{ proyecto.descripcion }}
+                                <p>{{ proyecto.descripcion }}</p>
+                                <img class="verProyecto" src="../assets/iconos/verProyecto.png" alt="" @click="verProyecto(proyecto.id)">
                               </b-card-text>
                             </b-card>
                         </div>
@@ -70,6 +80,10 @@ export default{
       } catch (error) {
         console.log(error);
       }
+      
+    },
+    async verProyecto(id){
+      this.$router.push('/verProyecto/'+id)
     },
 
 
@@ -86,3 +100,20 @@ export default{
 }
 </script>
 
+<style>
+
+.container {
+  position: relative;
+}
+
+
+
+.container .verProyecto {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translateX(50%);
+}
+
+
+</style> 

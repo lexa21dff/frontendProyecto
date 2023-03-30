@@ -1,15 +1,21 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import ListaView from '../views/ListaProyecto.vue'
+import ListaProyectoView from '../views/ListaProyecto.vue'
+import VerProyectoView from '../views/VerProyecto.vue'
 
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/ListaView',
-    name: 'ListaView',
-    component: ListaView
+    path: '/listaProyecto',
+    name: 'listaProyecto',
+    component: ListaProyectoView
+  },
+  {
+    path: '/verProyecto/:id',
+    name: 'verProyecto',
+    component: VerProyectoView
   },
  
 ]
